@@ -28,9 +28,13 @@ jobs:
         run: |
           python -m venv ./venv
       - name: Setup vcpkg and install dependencies
-        uses: lukka/run-vcpkg@v11
-        with:
-          runVcpkgInstall: false
+        run: |
+          git clone https://github.com/microsoft/vcpkg.git $env:VCPKG_ROOT
+          cd $env:VPKG_ROOT
+          ./bootstrap-vcpkg.bat -disableMetrics
+          ./vcpkg.exe install openssl
+        env:
+          VCPKG_ROOT: 'C:\vcpkg'
       - name: Build crypto wheel
         shell: pwsh
         run: |
