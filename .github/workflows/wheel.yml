@@ -27,11 +27,9 @@ jobs:
       - name: Setup virtual env
         run: |
           python -m venv ./venv
-      - name: Setup vcpkg and install dependencies
+      - name: install dependencies
         run: |
-          git clone https://github.com/microsoft/vcpkg.git $env:VCPKG_ROOT
           cd $env:VPKG_ROOT
-          ./bootstrap-vcpkg.bat -disableMetrics
           ./vcpkg.exe install openssl
         env:
           VCPKG_ROOT: 'C:\vcpkg'
