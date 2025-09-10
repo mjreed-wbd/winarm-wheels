@@ -30,7 +30,7 @@ jobs:
       - name: Setup vcpkg and install dependencies
         uses: lukka/run-vcpkg@v11
         with:
-          runVcpkgInstall: true 
+          runVcpkgInstall: false
       - name: Build crypto wheel
         shell: pwsh
         run: |
