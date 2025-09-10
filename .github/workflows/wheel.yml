@@ -17,22 +17,6 @@ jobs:
     runs-on: windows-11-arm
     name: Build wheel on Windows/ARM
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-      - name: Set up Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: '3.13'
-          architecture: 'arm64'
-      - name: Setup virtual env
-        run: |
-          python -m venv ./venv
-      - name: install dependencies
-        run: |
-          vcpkg install openssl
-          vcpkg integrate install
-      - name: Build crypto wheel
-        shell: pwsh
-        run: |
-          ./venv/Scripts/python -m pip install --upgrade pip
-          ./venv/Scripts/python -m pip install -r requirements.txt
+      - name: Show VCPKG_ROOT
+      - run: |
+            echo $env:VCPKG_ROOT
