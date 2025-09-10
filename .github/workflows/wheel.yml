@@ -1,0 +1,34 @@
+name: Wheel
+description: build a python cryptography wheel on winarm
+
+on:
+  push:
+    branches: 
+      - '*'
+  pull_request:
+    branches: 
+      - '*'
+  workflow_dispatch:
+
+jobs:
+  build-wheel:
+    strategy:
+      fail-fast: false
+    runs-on: windows-11-arm
+    name: Build wheel on ${{ matrix.os }} 
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+          architecture: 'arm64'
+      - name: Setup virtual env
+        run: |
+          python -m venv ./venv
+      - name: Build crypto wheel
+        shell: pwsh
+        run: |
+          ./venv/Scripts/python -m pip install --upgrade pip
+          ./venv/Scripts/python -m pip install --only-binary=:all: -r requirements_dev.txt
