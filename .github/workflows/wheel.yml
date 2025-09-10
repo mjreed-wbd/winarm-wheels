@@ -30,6 +30,7 @@ jobs:
       - name: install dependencies
         run: |
           vcpkg install openssl
+          vcpkg integrate install
       - name: Build crypto wheel
         shell: pwsh
         run: |
