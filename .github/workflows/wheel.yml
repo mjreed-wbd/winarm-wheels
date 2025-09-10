@@ -15,7 +15,7 @@ jobs:
     strategy:
       fail-fast: false
     runs-on: windows-11-arm
-    name: Build wheel on ${{ matrix.os }} 
+    name: Build wheel on Windows/ARM
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -31,4 +31,4 @@ jobs:
         shell: pwsh
         run: |
           ./venv/Scripts/python -m pip install --upgrade pip
-          ./venv/Scripts/python -m pip install --only-binary=:all: -r requirements.txt
+          ./venv/Scripts/python -m pip install -r requirements.txt
