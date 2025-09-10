@@ -27,6 +27,10 @@ jobs:
       - name: Setup virtual env
         run: |
           python -m venv ./venv
+      - name: Setup vcpkg and install dependencies
+        uses: lukka/run-vcpkg@v11
+        with:
+          runVcpkgInstall: true 
       - name: Build crypto wheel
         shell: pwsh
         run: |
