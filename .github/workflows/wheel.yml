@@ -17,7 +17,7 @@ jobs:
     runs-on: windows-11-arm
     name: Build wheel on Windows/ARM
     env: 
-      VCPKG_ROOT: "C:\VCPKG"
+      VCPKG_ROOT: 'C:\VCPKG'
     steps:
       - name: Show VCPKG_ROOT
         run: |
